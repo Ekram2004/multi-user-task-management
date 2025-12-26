@@ -13,7 +13,7 @@ const teamMemeberSchema = new mongoose.Schema({
     },
     role: {
         type: String,
-        enum: ['admin', 'member'],
+        enum: ['admin', 'member','owner'],
         default:'member'
     }
 },{timestamps:true});

@@ -1,7 +1,9 @@
 const jwt = require('jsonwebtoken');
 const ApiError = require('../utils/ApiError');
 
-module.exports =  (req, res, next) => {
+module.exports = (req, res, next) => {
+    console.log("AUTH MIDDLEWARE HIT");
+
     const authHeader = req.headers['authorization'];
     if (!authHeader || !authHeader.startsWith['Bearer']) {
         return next (new ApiError(401,"Unauthorized"));
@@ -12,7 +14,7 @@ module.exports =  (req, res, next) => {
         req.user = decoded;
         next();
     } catch (err) {
-        next(new ApiError(401, 'Invalid or expired token'));
+         next (new ApiError(401, 'Invalid or expired token'));
     }
 }
 
